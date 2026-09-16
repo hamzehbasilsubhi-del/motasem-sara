@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const envelopeVideo = document.getElementById('envelope-video');
     const interactiveCover = document.getElementById('interactive-cover');
     const weddingInvitation = document.getElementById('wedding-invitation');
+    const bgMusic = document.getElementById('bg-music');
 
     /* تفعيل تأثير الظهور والتحريك عند التمرير للأسفل (Scroll Reveal / Fade In) */
     const initScrollReveal = () => {
@@ -28,6 +29,13 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     openBtn.addEventListener('click', () => {
+        /* تشغيل موسيقى الخلفية فور الضغط على زر الفتح */
+        if (bgMusic) {
+            bgMusic.play().catch(err => {
+                console.log("تشغيل الصوت يتطلب تفاعل المستخدم:", err);
+            });
+        }
+
         coverImage.style.display = 'none';
         envelopeVideo.style.display = 'block';
         openBtn.style.display = 'none';
