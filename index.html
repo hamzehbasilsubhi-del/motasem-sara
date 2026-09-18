@@ -3,343 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>دعوة زفاف معتصم & سارة</title>
+    <title>الدعوة تحت الصيانة</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;1,400&family=Aref+Ruqaa:wght@400&family=Cormorant+Garamond:ital,wght@0,600;1,400;1,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;1,400&family=Aref+Ruqaa:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #fcfbf7;
+            font-family: 'Amiri', 'Aref Ruqaa', serif;
+            text-align: center;
+            color: #333;
+        }
+        .maintenance-container {
+            padding: 40px 20px;
+            border: 1px solid #d4af37;
+            border-radius: 12px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            max-width: 500px;
+            width: 90%;
+        }
+        h1 {
+            font-size: 2.2rem;
+            color: #d4af37;
+            margin-bottom: 15px;
+        }
+        p {
+            font-size: 1.5rem;
+            color: #555;
+            margin: 0;
+        }
+    </style>
 </head>
 <body>
 
-    <!-- عنصر الموسيقى في الخلفية -->
-    <audio id="bg-music" src="music.mp3" loop preload="auto"></audio>
-
-    <!-- شاشة الغلاف والتفاعل الأولى -->
-    <div id="interactive-cover">
-        <img id="cover-image" src="cover.jpg" alt="غلاف الدعوة">
-        <video id="envelope-video" src="video.mp4" playsinline muted></video>
-        <button id="open-btn" aria-label="فتح الدعوة"></button>
+    <div class="maintenance-container">
+        <h1>الدعوة تحت الصيانة</h1>
+        <p>معتصم & سارة</p>
     </div>
 
-    <!-- محتوى الدعوة الرئيسي -->
-    <main id="wedding-invitation" class="hidden">
-        
-        <!-- البانر الرئيسي -->
-        <header class="hero-section scroll-reveal">
-            <video class="hero-video" src="hero-bg.mp4" autoplay loop muted playsinline></video>
-            <div class="hero-overlay"></div>
-            
-            <div class="hero-content">
-                <p class="quran-verse">
-                    ﴿وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا<br>
-                    لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً﴾
-                </p>
-                
-                <h1 class="wedding-title">دعوة زفاف</h1>
-                <h2 class="couples-names">معتصم & سارة</h2>
-                <p class="wedding-date-text">يتشرفان بدعوتكم لمشاركتهم أجمل لحظات العمر</p>
-                <p class="wedding-date-highlight">السبت، 17 أكتوبر 2026</p>
-                
-                <div class="hero-logo-wrapper">
-                    <img src="logo.png" alt="شعار الزفاف" class="wedding-logo">
-                </div>
-            </div>
-        </header>
-
-        <!-- بطاقة الإطار المزخرفة -->
-        <div class="custom-frame-container scroll-reveal">
-            <img src="frame-bg.png" alt="إطار الدعوة" class="frame-bg-image">
-            <div class="frame-content">
-                <img src="bismillah.png" alt="بسم الله الرحمن الرحيم" class="bismillah-img">
-                
-                <div class="divider-wrapper top-divider">
-                    <img src="divider.png" alt="فاصل مزخرف" class="divider-img">
-                </div>
-                
-                <div class="invitation-text-block">
-                    <p class="invitation-line-1">
-                        ببالغ الفرح والاستبشار<br>
-                        وبأسمى معاني الحب والامتنان،
-                    </p>
-
-                    <h3 class="invitation-hosts">
-                        يتشرف السيد معتصم والآنسة سارة
-                    </h3>
-
-                    <p class="invitation-line-2">
-                        بدعوتكم الكريمة لمشاركتهم<br>
-                        أبهى لحظات العمر في حفل زفافهما
-                    </p>
-                    
-                    <p class="invitation-line-3">
-                        حضوركم يكتمل به أنسنا<br>
-                        وتزدان به ليلتنا بهجةً وفرحاً
-                    </p>
-
-                    <p class="invitation-line-4">
-                        نسعد بتشريفكم<br>
-                        ونعتز بجميل حضوركم
-                    </p>
-                </div>
-
-                <div class="divider-wrapper bottom-divider">
-                    <img src="divider.png" alt="فاصل مزخرف" class="divider-img">
-                </div>
-            </div>
-        </div>
-
-        <!-- قسم التقويم -->
-        <section class="section calendar-section scroll-reveal">
-            <h2 class="calendar-month-title">October 2026</h2>
-            <div class="calendar-grid">
-                <div class="cal-head">S</div>
-                <div class="cal-head">M</div>
-                <div class="cal-head">T</div>
-                <div class="cal-head">W</div>
-                <div class="cal-head">T</div>
-                <div class="cal-head">F</div>
-                <div class="cal-head">S</div>
-
-                <div class="cal-day"></div>
-                <div class="cal-day"></div>
-                <div class="cal-day"></div>
-                <div class="cal-day"></div>
-                <div class="cal-day">1</div>
-                <div class="cal-day">2</div>
-                <div class="cal-day">3</div>
-
-                <div class="cal-day">4</div>
-                <div class="cal-day">5</div>
-                <div class="cal-day">6</div>
-                <div class="cal-day">7</div>
-                <div class="cal-day">8</div>
-                <div class="cal-day">9</div>
-                <div class="cal-day">10</div>
-
-                <div class="cal-day">11</div>
-                <div class="cal-day">12</div>
-                <div class="cal-day">13</div>
-                <div class="cal-day">14</div>
-                <div class="cal-day">15</div>
-                <div class="cal-day">16</div>
-                <div class="cal-day event-day"><span>17</span></div>
-
-                <div class="cal-day">18</div>
-                <div class="cal-day">19</div>
-                <div class="cal-day">20</div>
-                <div class="cal-day">21</div>
-                <div class="cal-day">22</div>
-                <div class="cal-day">23</div>
-                <div class="cal-day">24</div>
-
-                <div class="cal-day">25</div>
-                <div class="cal-day">26</div>
-                <div class="cal-day">27</div>
-                <div class="cal-day">28</div>
-                <div class="cal-day">29</div>
-                <div class="cal-day">30</div>
-                <div class="cal-day">31</div>
-            </div>
-        </section>
-
-        <!-- قسم العد التنازلي -->
-        <section class="section countdown-section scroll-reveal">
-            <div class="countdown-header-wrapper">
-                <img src="flower-vase.png" alt="مزهرية ورود" class="countdown-flower-icon">
-                <h2 class="countdown-title">العداد التنازلي</h2>
-            </div>
-            <p class="countdown-subtitle">حتى 17 أكتوبر 2026</p>
-            <div id="countdown">
-                <div class="time-box">
-                    <span id="days">00</span>
-                    <label>أيام</label>
-                </div>
-                <div class="time-box">
-                    <span id="hours">00</span>
-                    <label>ساعات</label>
-                </div>
-                <div class="time-box">
-                    <span id="minutes">00</span>
-                    <label>دقائق</label>
-                </div>
-                <div class="time-box">
-                    <span id="seconds">00</span>
-                    <label>ثوانٍ</label>
-                </div>
-            </div>
-        </section>
-
-        <!-- برنامج الحفل -->
-        <section class="section program-section">
-            <div class="program-header-wrapper scroll-reveal">
-                <img src="couple-illustration.png" alt="أيقونة العروسين" class="program-couple-icon">
-                <h3 class="program-main-title">برنامج الحفل</h3>
-            </div>
-            
-            <div class="vertical-timeline">
-                <div class="timeline-node top-node scroll-reveal">
-                    <div class="node-icon">
-                        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M32 12C32 12 25 6 14 6C8 6 4 8 4 8V44C4 44 8 42 14 42C25 42 32 48 32 48" />
-                            <path d="M32 12C32 12 39 6 50 6C56 6 60 8 60 8V44C60 44 56 42 50 42C39 42 32 48 32 48" />
-                            <path d="M32 12V48" />
-                            <path d="M14 42V48" />
-                            <path d="M50 42V48" />
-                            <path d="M28 3c1.5-1.5 4.5-1.5 6 0" />
-                            <path d="M30 1c0 2 2 3 3 3" />
-                        </svg>
-                    </div>
-                    <div class="node-text">عقد القرآن</div>
-                </div>
-
-                <div class="timeline-heart scroll-reveal">♥</div>
-
-                <div class="timeline-row right-side scroll-reveal">
-                    <div class="node-content">
-                        <div class="node-icon">
-                            <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="24" cy="38" r="16" />
-                                <circle cx="40" cy="38" r="16" />
-                                <path d="M36 22L40 16L44 22" />
-                                <polygon points="40,14 37,18 43,18" />
-                            </svg>
-                        </div>
-                        <div class="node-text">تبادل الخواتم</div>
-                    </div>
-                </div>
-
-                <div class="timeline-heart scroll-reveal">♥</div>
-
-                <div class="timeline-row left-side scroll-reveal">
-                    <div class="node-content">
-                        <div class="node-icon">
-                            <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M10 20H54C56.2 20 58 21.8 58 24V48C58 50.2 56.2 52 54 52H10C7.8 52 6 50.2 6 48V24C6 21.8 7.8 20 10 20Z" />
-                                <path d="M22 20L26 14H38L42 20" />
-                                <circle cx="32" cy="36" r="10" />
-                                <line x1="28" y1="11" x2="36" y2="11" />
-                            </svg>
-                        </div>
-                        <div class="node-text">التقاط الصور</div>
-                    </div>
-                </div>
-
-                <div class="timeline-heart scroll-reveal">♥</div>
-
-                <div class="timeline-row right-side scroll-reveal">
-                    <div class="node-content">
-                        <div class="node-icon">
-                            <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="32" cy="32" r="14" />
-                                <path d="M14 16V30C14 34 18 36 18 40V52" />
-                                <line x1="18" y1="16" x2="18" y2="28" />
-                                <path d="M22 16V28" />
-                                <path d="M50 16V52M50 16C50 24 44 26 44 32H50" />
-                            </svg>
-                        </div>
-                        <div class="node-text">طعام العشاء</div>
-                    </div>
-                </div>
-
-                <div class="timeline-heart scroll-reveal">♥</div>
-
-                <div class="timeline-row left-side scroll-reveal">
-                    <div class="node-content">
-                        <div class="node-icon">
-                            <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M18 12C18 12 14 26 32 36C50 26 46 12 46 12H18Z" />
-                                <line x1="32" y1="36" x2="32" y2="52" />
-                                <line x1="22" y1="52" x2="42" y2="52" />
-                                <path d="M26 22C30 24 34 20 38 22" />
-                            </svg>
-                        </div>
-                        <div class="node-text">الضيافة والمشروبات</div>
-                    </div>
-                </div>
-
-                <div class="timeline-heart scroll-reveal">♥</div>
-
-                <div class="timeline-row right-side scroll-reveal">
-                    <div class="node-content">
-                        <div class="node-icon">
-                            <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M22 30H42V18H22V30Z" />
-                                <path d="M14 46H50V30H14V46Z" />
-                                <line x1="10" y1="52" x2="54" y2="52" />
-                                <path d="M32 12C32 12 30 14 32 16C34 14 32 12 32 12Z" />
-                            </svg>
-                        </div>
-                        <div class="node-text">تقطيع الكعكة</div>
-                    </div>
-                </div>
-
-                <div class="timeline-heart scroll-reveal">♥</div>
-
-                <div class="timeline-node bottom-node scroll-reveal">
-                    <div class="node-icon">
-                        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M18 48C18 51.3 15.3 54 12 54C8.7 54 6 51.3 6 48C6 44.7 8.7 42 12 42C13.5 42 14.8 42.5 15.8 43.4V16L42 10V38" />
-                            <path d="M44 42C44 45.3 41.3 48 38 48C32 42 34.7 36 38 36C39.5 36 40.8 36.5 41.8 37.4V10" />
-                            <line x1="16" y1="24" x2="42" y2="18" />
-                        </svg>
-                    </div>
-                    <div class="node-text">الحفل والأنس</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- موقع الحفل -->
-        <section class="section location-section">
-            <h3>موقع الحفل</h3>
-            <p class="venue-name">Grand Plaza Movenpick City</p>
-            
-            <div class="venue-image-wrapper">
-                <img src="venue-building.png" alt="Grand Plaza Movenpick" class="venue-building-img">
-            </div>
-
-            <div class="elegant-map-frame">
-                <div class="map-inner-border">
-                    <div class="map-container">
-                        <iframe 
-                            src="https://maps.google.com/maps?q=Grand%20Plaza%20Movenpick%20City&t=&z=15&ie=UTF8&iwloc=&output=embed" 
-                            width="100%" height="260" style="border:0;" allowfullscreen="" loading="eager">
-                        </iframe>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- قسم تأكيد الحضور -->
-        <section class="section rsvp-card-section scroll-reveal">
-            <h3 class="rsvp-gold-title">تأكيد الحضور</h3>
-            <div class="divider-wrapper rsvp-divider">
-                <img src="divider.png" alt="فاصل مزخرف" class="divider-img">
-            </div>
-            <p class="rsvp-subtext">هل ستشاركوننا فرحتنا؟ يرجى تأكيد الحضور قبل <br><span>17 أكتوبر 2026</span></p>
-            
-            <div class="wax-seal-wrapper" id="wax-seal-trigger">
-                <img src="gold-seal.png" alt="ختم تأكيد الحضور" class="gold-seal-img">
-                <span class="seal-arrow">∨</span>
-                <p class="click-to-open">إضغط للفتح</p>
-            </div>
-
-            <form id="rsvp-form" class="rsvp-modal-form">
-                <input type="text" placeholder="الاسم الكامل" required>
-                <select required>
-                    <option value="" disabled selected>هل ستشرفنا بالحضور؟</option>
-                    <option value="yes">يشرفني الحضور</option>
-                    <option value="no">أعتذر عن الحضور</option>
-                </select>
-                <input type="number" placeholder="عدد المرافقين" min="0" max="5">
-                <button type="submit" class="submit-btn">إرسال التأكيد</button>
-            </form>
-        </section>
-
-        <!-- التذييل السفلي -->
-        <footer class="matching-footer scroll-reveal">
-            <p class="footer-heart-text">♡ ودامت دياركم بالخير ♡</p>
-        </footer>
-
-    </main>
-
-    <script src="script.js"></script>
 </body>
 </html>
