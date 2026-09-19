@@ -3,7 +3,7 @@
     --secondary-color: #FFEFCC;
     --tertiary-color: #022C22;
     --neutral-color: #FAF8F5;
-    --timeline-line-color: #4A4A4A;
+    --timeline-line-color: #1A1A1A;
     --gold-primary: #C5A059;
     --gold-light: #E6CA85;
     --gold-dark: #9A7B38;
@@ -30,35 +30,51 @@ body {
 #interactive-cover {
     position: fixed;
     top: 0;
-    left: 0;
-    width: 100vw;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 480px;
     height: 100vh;
     z-index: 1000;
     background-color: var(--primary-color);
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
 
-#cover-image, #envelope-video {
+#cover-image {
     position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center;
+    display: block;
 }
 
 #envelope-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     display: none;
 }
 
 #open-btn {
     position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     background: transparent;
     border: none;
     cursor: pointer;
     z-index: 1001;
+    outline: none;
 }
 
 .hidden {
@@ -112,441 +128,342 @@ body {
     align-items: center;
     justify-content: center;
     height: 100%;
+    gap: 15px;
 }
 
-.quran-verse {
-    font-size: 0.95rem;
-    line-height: 1.9;
-    color: var(--secondary-color);
-    margin-bottom: 20px;
-    padding: 0 10px;
-    opacity: 0.9;
-    font-weight: 300;
+.couples-names-img-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
-.wedding-title {
-    font-family: 'Aref Ruqaa', serif;
-    font-size: 2rem;
-    margin-bottom: 10px;
-    letter-spacing: 1px;
-    font-weight: 400;
-    color: var(--secondary-color);
-}
-
-.couples-names {
-    font-family: 'Aref Ruqaa', serif;
-    font-size: 2.7rem;
-    color: var(--secondary-color);
-    margin-bottom: 15px;
-    font-weight: 400;
-}
-
-.wedding-date-text {
-    font-size: 1rem;
-    margin-bottom: 8px;
-    font-weight: 300;
-    color: var(--secondary-color);
+.couples-names-img {
+    width: 260px;
+    max-width: 80%;
+    height: auto;
+    filter: drop-shadow(0px 2px 6px rgba(0, 0, 0, 0.25));
 }
 
 .wedding-date-highlight {
-    font-size: 1.2rem;
-    font-weight: 300;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 500;
+    letter-spacing: 4px;
     color: var(--secondary-color);
+    direction: ltr;
+    margin-top: 5px;
 }
 
 .hero-logo-wrapper {
-    margin-top: 20px;
+    margin-top: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .wedding-logo {
-    width: 75px;
+    width: 85px;
     height: auto;
     filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.3));
 }
 
-/* ---------------- إطار الدعوة ---------------- */
-.custom-frame-container {
-    position: relative;
-    width: 92%;
-    max-width: 420px;
-    margin: 30px auto 20px auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.frame-bg-image {
+/* ---------------- قسم النص المدمج مع خلفية text-bg.jpg ---------------- */
+.invitation-text-container {
     width: 100%;
-    height: auto;
-    display: block;
-}
-
-.frame-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 82%;
+    padding: 110px 25px 100px 25px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    box-sizing: border-box;
+    background-image: url('text-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    border-bottom: 1px solid rgba(6, 78, 59, 0.08);
 }
 
 .bismillah-img {
-    max-width: 170px;
+    max-width: 210px;
     height: auto;
-    margin-bottom: 0;
-}
-
-.divider-wrapper {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-}
-
-.top-divider {
-    margin-top: -6px;
-    margin-bottom: 12px;
-}
-
-.bottom-divider {
-    margin-top: 14px;
-}
-
-.rsvp-divider {
-    margin-top: 6px;
-    margin-bottom: 16px;
-}
-
-.divider-img {
-    max-width: 140px;
-    height: auto;
+    margin-bottom: 35px;
+    position: relative;
+    z-index: 2;
 }
 
 .invitation-text-block {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 5px;
+    gap: 24px;
     width: 100%;
+    position: relative;
+    z-index: 2;
 }
 
 .invitation-line-1 {
-    font-size: 1.05rem;
-    line-height: 1.45;
+    font-size: 1.25rem;
+    line-height: 1.8;
     color: var(--tertiary-color);
     font-weight: 300;
 }
 
 .invitation-hosts {
     font-family: 'Aref Ruqaa', serif;
-    font-size: 1.55rem;
+    font-size: 1.85rem;
     color: var(--tertiary-color);
-    margin: 4px 0;
+    margin: 10px 0;
     font-weight: 400;
 }
 
 .invitation-line-2 {
-    font-size: 1.15rem;
-    line-height: 1.45;
+    font-size: 1.35rem;
+    line-height: 1.8;
     color: var(--tertiary-color);
     font-weight: 300;
 }
 
-.invitation-line-3, .invitation-line-4 {
-    font-size: 1.05rem;
-    line-height: 1.45;
-    color: var(--tertiary-color);
-    font-weight: 300;
-}
-
-/* ---------------- قسم التقويم ---------------- */
-.calendar-section {
-    padding: 40px 20px 20px 20px;
-    direction: ltr;
-}
-
-.calendar-month-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: 2.2rem;
-    color: var(--tertiary-color);
-    margin-bottom: 25px;
-    font-weight: 500;
-}
-
-.calendar-grid {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 12px 5px;
-    max-width: 320px;
-    margin: 0 auto;
-    font-family: 'Cormorant Garamond', serif;
-}
-
-.cal-head {
-    font-weight: 600;
-    color: var(--tertiary-color);
-    font-size: 1.1rem;
-    text-transform: uppercase;
-}
-
-.cal-day {
+.invitation-line-3, 
+.invitation-line-4 {
     font-size: 1.25rem;
+    line-height: 1.8;
     color: var(--tertiary-color);
+    font-weight: 300;
+}
+
+/* ---------------- قسم الصورة المرجعية ---------------- */
+.frame-image-container {
+    position: relative;
+    width: 100%;
     display: flex;
-    align-items: center;
     justify-content: center;
-    height: 38px;
-    position: relative;
+    align-items: center;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(6, 78, 59, 0.08);
 }
 
-.cal-day.event-day {
-    position: relative;
+.frame-bg-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
 }
 
-.cal-day.event-day span {
-    position: relative;
-    z-index: 2;
-    color: #ffffff;
-    font-weight: 600;
-    line-height: 1;
-    display: inline-block;
-    transform: translateY(-1px);
-}
-
-.cal-day.event-day::before {
-    content: '';
+.calendar-overlay-img {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 32px;
-    height: 32px;
-    background-color: #E63946;
-    z-index: 1;
-    clip-path: path('M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z');
-    transform: translate(-45%, -42%) scale(1.65);
+    transform: translate(-50%, -50%);
+    width: 70%;
+    max-width: 310px;
+    height: auto;
+    object-fit: contain;
+    z-index: 2;
+    filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.08));
+    pointer-events: none;
 }
 
 /* ---------------- قسم العد التنازلي ---------------- */
 .countdown-section {
-    padding: 20px 20px 40px 20px;
-}
-
-.countdown-header-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 4px;
-}
-
-.countdown-flower-icon {
-    width: 150px;
-    height: auto;
-    margin-bottom: 8px;
-    filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.08));
-}
-
-.countdown-title {
-    font-family: 'Aref Ruqaa', serif;
-    font-size: 2rem;
-    color: var(--tertiary-color);
-    margin-bottom: 4px;
-    font-weight: 400;
-}
-
-.countdown-subtitle {
-    font-family: 'Amiri', serif;
-    font-size: 0.9rem;
-    letter-spacing: 2px;
-    color: var(--tertiary-color);
-    text-transform: uppercase;
-    margin-bottom: 25px;
-    font-weight: 300;
-}
-
-#countdown {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    max-width: 360px;
-    margin: 0 auto;
-    direction: rtl;
-}
-
-.time-box {
-    background: transparent;
-    border: none;
-    padding: 0;
-    min-width: 60px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.time-box span {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: 2.7rem;
-    font-weight: 400;
-    color: var(--tertiary-color);
-    line-height: 1;
-    margin-bottom: 8px;
-}
-
-.time-box label {
-    font-family: 'Amiri', serif;
-    font-size: 0.85rem;
-    font-weight: 300;
-    color: var(--tertiary-color);
-    letter-spacing: 1px;
-}
-
-/* ---------------- قسم برنامج الحفل الخطّي ---------------- */
-.program-section {
-    padding: 40px 20px;
-}
-
-.program-header-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 30px;
-}
-
-.program-couple-icon {
-    width: 180px;
-    height: auto;
-    margin-bottom: 12px;
-    filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.08));
-}
-
-.program-main-title {
-    font-family: 'Aref Ruqaa', serif;
-    font-size: 2.2rem;
-    color: var(--tertiary-color);
-    margin-bottom: 0;
-    font-weight: 400;
-    letter-spacing: 1px;
-}
-
-.vertical-timeline {
+    padding: 65px 15px;
+    background-image: url('countdown-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     position: relative;
-    max-width: 360px;
-    margin: 0 auto;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
 }
 
-.vertical-timeline::before {
-    content: '';
-    position: absolute;
-    top: 105px;
-    bottom: 95px;
-    left: 50%;
-    width: 1.5px;
-    background-color: var(--timeline-line-color);
-    transform: translateX(-50%);
-    z-index: 1;
-}
-
-.timeline-node {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 10px 0;
-}
-
-.timeline-node .node-icon svg {
-    width: 55px;
-    height: 55px;
-    stroke: var(--tertiary-color);
-    margin-bottom: 6px;
-    background: var(--neutral-color);
-    padding: 4px;
-}
-
-.node-text {
-    font-family: 'Amiri', serif;
-    font-size: 1.1rem;
-    color: var(--tertiary-color);
-    font-weight: 400;
-    letter-spacing: 0.5px;
-    text-align: center;
-    white-space: nowrap;
-    background: var(--neutral-color);
-    padding: 0 6px;
-}
-
-.timeline-heart {
-    position: relative;
-    z-index: 2;
-    background: var(--neutral-color);
-    color: var(--timeline-line-color);
-    font-size: 1.2rem;
-    line-height: 1;
-    padding: 6px 0;
-    margin: 4px 0;
-}
-
-.timeline-row {
+.countdown-content-wrapper {
     position: relative;
     z-index: 2;
     width: 100%;
-    display: flex;
-    align-items: center;
-    margin: 5px 0;
-}
-
-.timeline-row.right-side {
-    justify-content: flex-end;
-}
-
-.timeline-row.left-side {
-    justify-content: flex-start;
-}
-
-.timeline-row .node-content {
-    width: 44%;
+    max-width: 380px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.timeline-row .node-icon svg {
-    width: 48px;
-    height: 48px;
-    stroke: var(--tertiary-color);
-    margin-bottom: 4px;
-    background: var(--neutral-color);
-    padding: 2px;
+.countdown-title-cursive {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2rem;
+    color: #E8E3D5;
+    margin-bottom: 20px;
+    font-weight: 400;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.35);
+    direction: ltr;
+    letter-spacing: 0.5px;
 }
 
-/* ---------------- تأثيرات الظهور عند التمرير ---------------- */
-.scroll-reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
-    will-change: opacity, transform;
+#countdown-display {
+    width: 100%;
+    direction: ltr;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.scroll-reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
+.digits-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    font-family: 'Cormorant Garamond', 'Cinzel', serif;
+    font-size: 2.6rem;
+    font-weight: 400;
+    color: #E8E3D5;
+    line-height: 1;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.digits-row span {
+    display: inline-block;
+    min-width: 38px;
+    text-align: center;
+}
+
+.digits-row .colon {
+    min-width: auto;
+    font-size: 2rem;
+    margin: 0 -2px;
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+.labels-row {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    width: 100%;
+    max-width: 270px;
+    margin-top: 10px;
+}
+
+.labels-row label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.6rem;
+    font-weight: 500;
+    color: #D3CEBE;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    text-align: center;
+    opacity: 0.85;
+    flex: 1;
+}
+
+/* ---------------- قسم برنامج الحفل ---------------- */
+.program-overlay-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(6, 78, 59, 0.08);
+}
+
+.program-bg-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+.program-timeline-vertical {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 38%;
+    max-width: 160px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 2;
+}
+
+.program-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+}
+
+.step-icon svg {
+    width: 20px;
+    height: 20px;
+    stroke: #111111;
+    stroke-width: 1.5;
+    margin-bottom: 1px;
+}
+
+.step-title {
+    font-family: 'Amiri', serif;
+    font-size: 0.78rem;
+    color: #111111;
+    font-weight: 400;
+    white-space: nowrap;
+    line-height: 1.1;
+}
+
+.timeline-connector {
+    width: 1px;
+    height: 10px;
+    background-color: #111111;
+    margin: 2px 0;
+    opacity: 0.85;
+}
+
+/* ---------------- قسم صورة المغلف envelope-quote-bg.jpg ---------------- */
+.envelope-quote-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(6, 78, 59, 0.08);
+}
+
+.envelope-quote-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
 }
 
 /* ---------------- قسم موقع الحفل ---------------- */
+.location-section-bg {
+    width: 100%;
+    padding: 70px 20px;
+    background-image: url('text-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    border-bottom: 1px solid rgba(6, 78, 59, 0.08);
+}
+
+.location-content-block {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+}
+
+.location-content-block h3 {
+    color: var(--tertiary-color);
+    font-size: 2rem;
+    margin-bottom: 15px;
+    font-family: 'Aref Ruqaa', serif;
+    font-weight: 400;
+}
+
 .venue-name {
     font-size: 1.25rem;
-    margin-bottom: 12px;
+    margin-bottom: 18px;
     color: var(--tertiary-color);
     font-weight: 400;
 }
@@ -554,7 +471,7 @@ body {
 .venue-image-wrapper {
     display: flex;
     justify-content: center;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 .venue-building-img {
@@ -591,115 +508,164 @@ body {
     z-index: 1;
 }
 
-/* ---------------- قسم تأكيد الحضور ---------------- */
-.rsvp-card-section {
-    padding: 50px 20px 40px 20px;
-    background-color: #FAF6F0;
-    border-bottom: none;
-}
-
-.rsvp-gold-title {
-    font-family: 'Aref Ruqaa', serif;
-    font-size: 2.3rem;
-    color: var(--tertiary-color);
-    margin-bottom: 4px;
-    font-weight: 400;
-    letter-spacing: 0.5px;
-}
-
-.rsvp-subtext {
-    font-family: 'Amiri', serif;
-    font-size: 1.05rem;
-    color: var(--tertiary-color);
-    line-height: 1.6;
-    margin-bottom: 25px;
-}
-
-.rsvp-subtext span {
-    color: var(--tertiary-color);
-    font-weight: 400;
-}
-
-.wax-seal-wrapper {
+/* ---------------- قسم تأكيد الحضور المخصص (تعديلات الخط والمحاذاة لليار) ---------------- */
+.custom-rsvp-section {
+    width: 100%;
+    padding: 60px 20px 50px 20px;
+    background-color: #EBE8DE;
+    background-image: radial-gradient(circle at center, rgba(255,255,255,0.4) 0%, rgba(220,217,208,0.4) 100%);
     display: flex;
     flex-direction: column;
     align-items: center;
-    cursor: pointer;
-    margin: 15px 0 20px 0;
-    user-select: none;
+    position: relative;
+    font-family: 'Cairo', sans-serif;
+    color: #f7f6e1;
 }
 
-.gold-seal-img {
-    width: 90px;
-    height: 90px;
-    object-fit: contain;
-    filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.15));
-    transition: transform 0.3s ease, filter 0.3s ease;
+.rsvp-header-title {
+    font-family: 'Great Vibes', cursive;
+    font-size: 4.5rem;
+    color: #222222;
+    margin-bottom: 15px;
+    font-weight: 400;
+    line-height: 1;
 }
 
-.wax-seal-wrapper:hover .gold-seal-img {
-    transform: scale(1.08) rotate(3deg);
-    filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.22));
-}
-
-.seal-arrow {
-    font-size: 0.9rem;
-    color: var(--tertiary-color);
-    margin-top: 10px;
-    margin-bottom: 2px;
-    font-weight: bold;
-}
-
-.click-to-open {
-    font-family: 'Aref Ruqaa', serif;
-    font-size: 1.2rem;
-    color: var(--tertiary-color);
-    letter-spacing: 0.5px;
-}
-
-.rsvp-modal-form {
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    transition: max-height 0.5s ease, opacity 0.4s ease, margin-top 0.4s ease;
+.custom-rsvp-card {
+    background-color: #636852;
+    width: 100%;
+    max-width: 380px;
+    border-radius: 20px;
+    padding: 30px 22px 25px 22px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    max-width: 320px;
-    margin: 0 auto;
+    align-items: center;
 }
 
-.rsvp-modal-form.active {
-    max-height: 350px;
-    opacity: 1;
-    margin-top: 20px;
+/* صورة الأسماء البديلة */
+.custom-couple-names-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
 }
 
-#rsvp-form input, #rsvp-form select {
-    padding: 12px 14px;
-    border: 1px solid var(--gold-primary);
-    border-radius: 8px;
-    background-color: #FFF;
-    font-family: 'Amiri', serif;
+.custom-couple-names-img {
+    max-width: 180px;
+    height: auto;
+    filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.2));
+}
+
+/* محاذاة النموذج بالكامل إلى اليسار وبخط Cairo ولون #f7f6e1 */
+.custom-form-body {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    text-align: left;
+    direction: ltr;
+    font-family: 'Cairo', sans-serif;
+    color: #f7f6e1;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    text-align: left;
+}
+
+.input-label {
+    font-family: 'Cairo', sans-serif;
     font-size: 0.95rem;
-    color: var(--tertiary-color);
-    outline: none;
+    color: #f7f6e1;
+    font-weight: 600;
+    text-align: left;
 }
 
-.submit-btn {
-    background-color: var(--primary-color);
-    color: #FFF;
-    padding: 12px;
-    border: none;
+.custom-input, .custom-textarea {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(247, 246, 225, 0.3);
     border-radius: 8px;
-    font-size: 1rem;
-    font-family: 'Amiri', serif;
-    cursor: pointer;
-    transition: background 0.3s;
+    padding: 10px 12px;
+    color: #f7f6e1;
+    font-family: 'Cairo', sans-serif;
+    font-size: 0.95rem;
+    outline: none;
+    text-align: left;
+    direction: ltr;
+    transition: border-color 0.3s;
 }
 
-.submit-btn:hover {
-    background-color: var(--emerald-dark);
+.custom-input:focus, .custom-textarea:focus {
+    border-color: #f7f6e1;
+}
+
+.custom-radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.radio-btn-option {
+    cursor: pointer;
+    position: relative;
+    width: 100%;
+    text-align: left;
+}
+
+.radio-btn-option input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.radio-box {
+    display: block;
+    width: 100%;
+    padding: 9px 15px;
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    color: #f7f6e1;
+    font-family: 'Cairo', sans-serif;
+    font-size: 0.95rem;
+    text-align: left;
+    transition: background-color 0.3s;
+}
+
+.radio-btn-option input[type="radio"]:checked + .radio-box {
+    background-color: rgba(255, 255, 255, 0.28);
+    border: 1px solid rgba(247, 246, 225, 0.5);
+}
+
+.custom-submit-btn {
+    width: 100%;
+    background-color: #383637;
+    color: #f7f6e1;
+    border: none;
+    border-radius: 20px;
+    padding: 10px;
+    font-family: 'Cairo', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+.custom-submit-btn:hover {
+    background-color: #222222;
+}
+
+.rsvp-bottom-phrase {
+    font-family: 'Aref Ruqaa', serif;
+    font-size: 2rem;
+    color: #222222;
+    margin-top: 35px;
+    text-align: center;
 }
 
 /* ---------------- التذييل ---------------- */

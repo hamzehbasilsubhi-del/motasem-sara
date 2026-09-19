@@ -1,72 +1,66 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // --- عناصر فتح الغلاف والفيديو والموسيقى ---
     const openBtn = document.getElementById('open-btn');
     const coverImage = document.getElementById('cover-image');
     const envelopeVideo = document.getElementById('envelope-video');
     const interactiveCover = document.getElementById('interactive-cover');
-    const weddingInvitation = document.getElementById('wedding-invitation');
+    const mainContent = document.getElementById('wedding-invitation');
     const bgMusic = document.getElementById('bg-music');
 
-    /* تفعيل تأثير الظهور والتحريك عند التمرير للأسفل (Scroll Reveal / Fade In) */
-    const initScrollReveal = () => {
-        const revealElements = document.querySelectorAll('.scroll-reveal');
-        
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px 0px -40px 0px',
-            threshold: 0.1
-        };
+    // معالجة خطأ تحميل صورة الغلاف
+    if (coverImage) {
+        coverImage.addEventListener('error', function handleCoverError() {
+            if (this.src.endsWith('.png')) {
+                this.src = 'cover.jpg';
+            } else if (this.src.endsWith('.jpg')) {
+                this.src = 'cover.jpeg';
+            } else if (this.src.endsWith('.jpeg')) {
+                this.src = 'cover.png';
+                this.removeEventListener('error', handleCoverError);
+            }
+        });
+    }
 
-        const revealObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
+    if (openBtn) {
+        openBtn.addEventListener('click', () => {
+            if (bgMusic) {
+                bgMusic.play().catch(error => {
+                    console.log("إذن تشغيل الصوت يتطلب تفاعل المستخدم الأول:", error);
+                });
+            }
 
-        revealElements.forEach(el => revealObserver.observe(el));
-    };
+            if (coverImage) coverImage.style.display = 'none';
+            if (envelopeVideo) {
+                envelopeVideo.style.display = 'block';
+                envelopeVideo.play().catch(() => {
+                    finishCoverAnimation();
+                });
 
-    openBtn.addEventListener('click', () => {
-        /* تشغيل موسيقى الخلفية فور الضغط على زر الفتح */
-        if (bgMusic) {
-            bgMusic.play().catch(err => {
-                console.log("تشغيل الصوت يتطلب تفاعل المستخدم:", err);
-            });
-        }
+                envelopeVideo.onended = () => {
+                    finishCoverAnimation();
+                };
+            } else {
+                finishCoverAnimation();
+            }
+        });
+    }
 
-        coverImage.style.display = 'none';
-        envelopeVideo.style.display = 'block';
-        openBtn.style.display = 'none';
-
-        envelopeVideo.play();
-
-        envelopeVideo.onended = () => {
-            interactiveCover.style.transition = 'opacity 0.8s ease';
+    function finishCoverAnimation() {
+        if (interactiveCover) {
+            interactiveCover.style.transition = 'opacity 1s ease';
             interactiveCover.style.opacity = '0';
             
             setTimeout(() => {
                 interactiveCover.style.display = 'none';
-                weddingInvitation.classList.remove('hidden');
-                window.scrollTo(0, 0);
-                
-                /* تهيئة المراقب فور فتح الدعوة */
-                initScrollReveal();
-            }, 800);
-        };
-    });
+                if (mainContent) mainContent.classList.remove('hidden');
+            }, 1000);
+        }
+    }
 
+    // --- العداد التنازلي لحفل الزفاف ---
     const weddingDate = new Date('October 17, 2026 19:00:00').getTime();
 
-    const formatNumber = (num) => {
-        return num.toLocaleString('en-US', {
-            minimumIntegerDigits: 2,
-            useGrouping: false
-        });
-    };
-
-    const updateCountdown = () => {
+    function updateCountdown() {
         const now = new Date().getTime();
         const difference = weddingDate - now;
 
@@ -76,30 +70,33 @@ document.addEventListener('DOMContentLoaded', () => {
             const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
-            document.getElementById('days').innerText = formatNumber(days);
-            document.getElementById('hours').innerText = formatNumber(hours);
-            document.getElementById('minutes').innerText = formatNumber(minutes);
-            document.getElementById('seconds').innerText = formatNumber(seconds);
+            const dEl = document.getElementById('days');
+            const hEl = document.getElementById('hours');
+            const mEl = document.getElementById('minutes');
+            const sEl = document.getElementById('seconds');
+
+            if (dEl) dEl.innerText = String(days).padStart(2, '0');
+            if (hEl) hEl.innerText = String(hours).padStart(2, '0');
+            if (mEl) mEl.innerText = String(minutes).padStart(2, '0');
+            if (sEl) sEl.innerText = String(seconds).padStart(2, '0');
         } else {
-            document.getElementById('countdown').innerHTML = "<p style='font-family: Amiri; font-size: 1.2rem; color: #022C22;'>أهلاً بكم في يومنا المميز!</p>";
+            const countdownDisplay = document.getElementById('countdown-display');
+            if (countdownDisplay) {
+                countdownDisplay.innerHTML = '<p style="font-size:1.5rem; color:#E8E3D5; font-family:\'Amiri\', serif;">أهلاً وسهلاً بكم في حفل زفافنا اليوم!</p>';
+            }
         }
-    };
+    }
 
     setInterval(updateCountdown, 1000);
     updateCountdown();
 
-    /* التفاعل الخاص بفتح نموذج RSVP عند النقر على الختم الشمعي */
-    const waxSealTrigger = document.getElementById('wax-seal-trigger');
-    const rsvpForm = document.getElementById('rsvp-form');
-
-    waxSealTrigger.addEventListener('click', () => {
-        rsvpForm.classList.toggle('active');
-    });
-
-    rsvpForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        alert('شكراً لكم! تم إرسال تأكيد الحضور بنجاح.');
-        rsvpForm.reset();
-        rsvpForm.classList.remove('active');
-    });
+    // --- معالجة نموذج تأكيد الحضور المخصص ---
+    const rsvpCustomForm = document.getElementById('rsvp-custom-form');
+    if (rsvpCustomForm) {
+        rsvpCustomForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('شكراً لك! تم إرسال تأكيد حضورك ورسالتك بنجاح.');
+            rsvpCustomForm.reset();
+        });
+    }
 });

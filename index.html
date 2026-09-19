@@ -3,48 +3,277 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الدعوة تحت الصيانة</title>
+    <title>دعوة زفاف معتصم & سارة</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;1,400&family=Aref+Ruqaa:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            background-color: #fcfbf7;
-            font-family: 'Amiri', 'Aref Ruqaa', serif;
-            text-align: center;
-            color: #333;
-        }
-        .maintenance-container {
-            padding: 40px 20px;
-            border: 1px solid #d4af37;
-            border-radius: 12px;
-            background-color: #ffffff;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            max-width: 500px;
-            width: 90%;
-        }
-        h1 {
-            font-size: 2.2rem;
-            color: #d4af37;
-            margin-bottom: 15px;
-        }
-        p {
-            font-size: 1.5rem;
-            color: #555;
-            margin: 0;
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;1,400&family=Aref+Ruqaa:wght@400;700&family=Cairo:wght@400;600;700&family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Great+Vibes&family=Reem+Kufi:wght@500;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <div class="maintenance-container">
-        <h1>الدعوة تحت الصيانة</h1>
-        <p>معتصم & سارة</p>
+    <!-- عنصر الموسيقى في الخلفية -->
+    <audio id="bg-music" src="music.mp3" loop preload="auto"></audio>
+
+    <!-- شاشة الغلاف والتفاعل الأولى -->
+    <div id="interactive-cover">
+        <img id="cover-image" src="cover.png" alt="غلاف الدعوة">
+        <video id="envelope-video" src="video.mp4" playsinline muted></video>
+        <button id="open-btn" aria-label="فتح الدعوة"></button>
     </div>
 
+    <!-- محتوى الدعوة الرئيسي -->
+    <main id="wedding-invitation" class="hidden">
+        
+        <!-- البانر الرئيسي -->
+        <header class="hero-section">
+            <video class="hero-video" src="hero-bg.mp4" autoplay loop muted playsinline></video>
+            <div class="hero-overlay"></div>
+            
+            <div class="hero-content">
+                <div class="couples-names-img-wrapper">
+                    <img src="couples-names.png" alt="معتصم وسارة" class="couples-names-img">
+                </div>
+                <p class="wedding-date-highlight">17 . 10 . 2026</p>
+                
+                <div class="hero-logo-wrapper">
+                    <img src="logo.png" alt="شعار الزفاف" class="wedding-logo">
+                </div>
+            </div>
+        </header>
+
+        <!-- قسم النص والبسملة مدمجة على صورة الخلفية text-bg.jpg -->
+        <section class="invitation-text-container">
+            <img src="bismillah.png" alt="بسم الله الرحمن الرحيم" class="bismillah-img">
+            
+            <div class="invitation-text-block">
+                <p class="invitation-line-1">
+                    ببالغ الفرح والاستبشار<br>
+                    وبأسمى معاني الحب والامتنان،
+                </p>
+
+                <h3 class="invitation-hosts">
+                    يتشرف السيد معتصم والآنسة سارة
+                </h3>
+
+                <p class="invitation-line-2">
+                    بدعوتكم الكريمة لمشاركتهم<br>
+                    أبهى لحظات العمر في حفل زفافهما
+                </p>
+                
+                <p class="invitation-line-3">
+                    حضوركم يكتمل به أنسنا<br>
+                    وتزدان به ليلتنا بهجةً وفرحاً
+                </p>
+
+                <p class="invitation-line-4">
+                    نسعد بتشريفكم<br>
+                    ونعتز بجميل حضوركم
+                </p>
+            </div>
+        </section>
+
+        <!-- قسم الإطار المدمج مع تقويم Save The Date -->
+        <section class="frame-image-container">
+            <img src="frame-bg.jpg" alt="خلفية الإطار المزين" class="frame-bg-img">
+            <img src="calendar-overlay.png" alt="تقويم موعد الزفاف Save The Date" class="calendar-overlay-img">
+        </section>
+
+        <!-- قسم العد التنازلي -->
+        <section class="section countdown-section">
+            <div class="countdown-content-wrapper">
+                <h2 class="countdown-title-cursive">Our Forever Begins In</h2>
+                
+                <div id="countdown-display">
+                    <div class="digits-row">
+                        <span id="days">00</span>
+                        <span class="colon">:</span>
+                        <span id="hours">00</span>
+                        <span class="colon">:</span>
+                        <span id="minutes">00</span>
+                        <span class="colon">:</span>
+                        <span id="seconds">00</span>
+                    </div>
+                    <div class="labels-row">
+                        <label>DAYS</label>
+                        <label>HOURS</label>
+                        <label>MINUTES</label>
+                        <label>SECONDS</label>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- قسم برنامج الحفل المدمج فوق program-bg.jpg -->
+        <section class="program-overlay-container">
+            <img src="program-bg.jpg" alt="خلفية برنامج الحفل" class="program-bg-img">
+            
+            <div class="program-timeline-vertical">
+                <!-- عقد القرآن -->
+                <div class="program-step">
+                    <div class="step-icon">
+                        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M32 12C32 12 25 6 14 6C8 6 4 8 4 8V44C4 44 8 42 14 42C25 42 32 48 32 48" />
+                            <path d="M32 12C32 12 39 6 50 6C56 6 60 8 60 8V44C60 44 56 42 50 42C39 42 32 48 32 48" />
+                            <path d="M32 12V48" />
+                        </svg>
+                    </div>
+                    <span class="step-title">عقد القرآن</span>
+                </div>
+
+                <div class="timeline-connector"></div>
+
+                <!-- التقاط الصور -->
+                <div class="program-step">
+                    <div class="step-icon">
+                        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M10 20H54C56.2 20 58 21.8 58 24V48C58 50.2 56.2 52 54 52H10C7.8 52 6 50.2 6 48V24C6 21.8 7.8 20 10 20Z" />
+                            <path d="M22 20L26 14H38L42 20" />
+                            <circle cx="32" cy="36" r="10" />
+                        </svg>
+                    </div>
+                    <span class="step-title">التقاط الصور</span>
+                </div>
+
+                <div class="timeline-connector"></div>
+
+                <!-- طعام العشاء -->
+                <div class="program-step">
+                    <div class="step-icon">
+                        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="32" cy="32" r="14" />
+                            <path d="M14 16V30C14 34 18 36 18 40V52" />
+                            <line x1="18" y1="16" x2="18" y2="28" />
+                            <path d="M50 16V52M50 16C50 24 44 26 44 32H50" />
+                        </svg>
+                    </div>
+                    <span class="step-title">طعام العشاء</span>
+                </div>
+
+                <div class="timeline-connector"></div>
+
+                <!-- الضيافة والمشروبات -->
+                <div class="program-step">
+                    <div class="step-icon">
+                        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 12C18 12 14 26 32 36C50 26 46 12 46 12H18Z" />
+                            <line x1="32" y1="36" x2="32" y2="52" />
+                            <line x1="22" y1="52" x2="42" y2="52" />
+                        </svg>
+                    </div>
+                    <span class="step-title">الضيافة والمشروبات</span>
+                </div>
+
+                <div class="timeline-connector"></div>
+
+                <!-- تقطيع الكعكة -->
+                <div class="program-step">
+                    <div class="step-icon">
+                        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 30H42V18H22V30Z" />
+                            <path d="M14 46H50V30H14V46Z" />
+                            <line x1="10" y1="52" x2="54" y2="52" />
+                            <path d="M32 12V18" />
+                        </svg>
+                    </div>
+                    <span class="step-title">تقطيع الكعكة</span>
+                </div>
+
+                <div class="timeline-connector"></div>
+
+                <!-- الحفل والأنس -->
+                <div class="program-step">
+                    <div class="step-icon">
+                        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 48C18 51.3 15.3 54 12 54C8.7 54 6 51.3 6 48C6 44.7 8.7 42 12 42C13.5 42 14.8 42.5 15.8 43.4V16L42 10V38" />
+                            <path d="M44 42C44 45.3 41.3 48 38 48C32 42 34.7 36 38 36C39.5 36 40.8 36.5 41.8 37.4V10" />
+                            <line x1="16" y1="24" x2="42" y2="18" />
+                        </svg>
+                    </div>
+                    <span class="step-title">الحفل والأنس</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- قسم صورة المغلف والبطاقة المرجعية -->
+        <section class="envelope-quote-container">
+            <img src="envelope-quote-bg.jpg" alt="بطاقة ورسالة الزفاف" class="envelope-quote-img">
+        </section>
+
+        <!-- موقع الحفل المدمج مع خلفية text-bg.jpg -->
+        <section class="location-section-bg">
+            <div class="location-content-block">
+                <h3>موقع الحفل</h3>
+                <p class="venue-name">Grand Plaza Movenpick City</p>
+                
+                <div class="venue-image-wrapper">
+                    <img src="venue-building.png" alt="Grand Plaza Movenpick" class="venue-building-img">
+                </div>
+
+                <div class="elegant-map-frame">
+                    <div class="map-inner-border">
+                        <div class="map-container">
+                            <iframe 
+                                src="https://maps.google.com/maps?q=Grand%20Plaza%20Movenpick%20City&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                                width="100%" height="260" style="border:0;" allowfullscreen="" loading="eager">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- قسم تأكيد الحضور المطور ومعدل بنصوص Cairo جهة اليسار -->
+        <section class="custom-rsvp-section">
+            <h2 class="rsvp-header-title">Rsvp</h2>
+
+            <div class="custom-rsvp-card">
+                <!-- صورة الأسماء المرجعية -->
+                <div class="custom-couple-names-wrapper">
+                    <img src="rsvp-couple-names.png" alt="معتصم وسارة" class="custom-couple-names-img">
+                </div>
+
+                <!-- نموذج الإدخال بمحاذاة يسار وخط Cairo ولون #f7f6e1 -->
+                <form id="rsvp-custom-form" class="custom-form-body">
+                    <!-- حقل الاسم -->
+                    <div class="form-group">
+                        <label class="input-label">*الاسم</label>
+                        <input type="text" class="custom-input" required>
+                    </div>
+
+                    <!-- التكرم بتأكيد الحضور -->
+                    <div class="form-group">
+                        <label class="input-label">*التكرم بتأكيد الحضور</label>
+                        <div class="custom-radio-group">
+                            <label class="radio-btn-option">
+                                <input type="radio" name="attendance" value="yes" checked>
+                                <span class="radio-box">نعم</span>
+                            </label>
+                            <label class="radio-btn-option">
+                                <input type="radio" name="attendance" value="no">
+                                <span class="radio-box">لا</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- كلمة من قلبك لهم -->
+                    <div class="form-group">
+                        <label class="input-label">*كلمة من قلبك لهم</label>
+                        <textarea class="custom-textarea" rows="3" required></textarea>
+                    </div>
+
+                    <!-- زر الإرسال -->
+                    <button type="submit" class="custom-submit-btn">إرسال</button>
+                </form>
+            </div>
+
+            <p class="rsvp-bottom-phrase">وبحضوركم تتم الفرحة والسرور</p>
+        </section>
+
+        <!-- التذييل السفلي -->
+        <footer class="matching-footer">
+            <p class="footer-heart-text">♡ ودامت دياركم بالخير ♡</p>
+        </footer>
+
+    </main>
+
+    <script src="script.js"></script>
 </body>
 </html>
