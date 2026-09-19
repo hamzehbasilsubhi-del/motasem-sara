@@ -12,10 +12,10 @@
     <!-- عنصر الموسيقى في الخلفية -->
     <audio id="bg-music" src="music.mp3" loop preload="auto"></audio>
 
-    <!-- شاشة الغلاف والتفاعل الأولى -->
+    <!-- شاشة الغلاف والتفاعل الأولى (تم تجهيز الفيديو مسبقاً وسلاسة الانتقال) -->
     <div id="interactive-cover">
+        <video id="envelope-video" src="video.mp4" playsinline muted preload="auto" class="video-behind-cover"></video>
         <img id="cover-image" src="cover.png" alt="غلاف الدعوة">
-        <video id="envelope-video" src="video.mp4" playsinline muted></video>
         <button id="open-btn" aria-label="فتح الدعوة"></button>
     </div>
 
@@ -24,7 +24,7 @@
         
         <!-- البانر الرئيسي -->
         <header class="hero-section">
-            <video class="hero-video" src="hero-bg.mp4" autoplay loop muted playsinline></video>
+            <video class="hero-video" src="hero-bg.mp4" autoplay loop muted playsinline preload="auto"></video>
             <div class="hero-overlay"></div>
             
             <div class="hero-content">
@@ -220,7 +220,7 @@
             </div>
         </section>
 
-        <!-- قسم تأكيد الحضور المطور ومعدل بنصوص Cairo جهة اليسار -->
+        <!-- قسم تأكيد الحضور المطور -->
         <section class="custom-rsvp-section">
             <h2 class="rsvp-header-title">Rsvp</h2>
 
@@ -230,7 +230,7 @@
                     <img src="rsvp-couple-names.png" alt="معتصم وسارة" class="custom-couple-names-img">
                 </div>
 
-                <!-- نموذج الإدخال بمحاذاة يسار وخط Cairo ولون #f7f6e1 -->
+                <!-- نموذج الإدخال -->
                 <form id="rsvp-custom-form" class="custom-form-body">
                     <!-- حقل الاسم -->
                     <div class="form-group">

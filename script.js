@@ -7,6 +7,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const mainContent = document.getElementById('wedding-invitation');
     const bgMusic = document.getElementById('bg-music');
 
+    // تجهيز الفيديو في الخلفية لمنع ظهور أي شاشة خضراء أو تأخير
+    if (envelopeVideo) {
+        envelopeVideo.load();
+    }
+
     // معالجة خطأ تحميل صورة الغلاف
     if (coverImage) {
         coverImage.addEventListener('error', function handleCoverError() {
@@ -21,20 +26,41 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    let isOpened = false;
+
     if (openBtn) {
         openBtn.addEventListener('click', () => {
+            if (isOpened) return;
+            isOpened = true;
+
+            // 1. تشغيل الموسيقى
             if (bgMusic) {
                 bgMusic.play().catch(error => {
                     console.log("إذن تشغيل الصوت يتطلب تفاعل المستخدم الأول:", error);
                 });
             }
 
-            if (coverImage) coverImage.style.display = 'none';
+            // 2. تشغيل الفيديو في الخلفية والانتظار حتى يبدأ الدوران فعلياً بدون فجوة خضراء
             if (envelopeVideo) {
-                envelopeVideo.style.display = 'block';
-                envelopeVideo.play().catch(() => {
-                    finishCoverAnimation();
-                });
+                const playPromise = envelopeVideo.play();
+
+                // دالة لإخفاء صورة الغلاف عند التأكد من بدء دوران الفيديو
+                const showVideoSmoothly = () => {
+                    if (coverImage) {
+                        coverImage.classList.add('fade-out');
+                    }
+                };
+
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        // استخدام الحدث timeupdate لضمان أن أول إطار قد تم عرضه فعلياً
+                        envelopeVideo.addEventListener('timeupdate', showVideoSmoothly, { once: true });
+                    }).catch(() => {
+                        finishCoverAnimation();
+                    });
+                } else {
+                    showVideoSmoothly();
+                }
 
                 envelopeVideo.onended = () => {
                     finishCoverAnimation();
@@ -47,13 +73,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function finishCoverAnimation() {
         if (interactiveCover) {
-            interactiveCover.style.transition = 'opacity 1s ease';
             interactiveCover.style.opacity = '0';
-            
             setTimeout(() => {
                 interactiveCover.style.display = 'none';
                 if (mainContent) mainContent.classList.remove('hidden');
-            }, 1000);
+            }, 800);
         }
     }
 
