@@ -176,68 +176,23 @@ body {
     filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.3));
 }
 
-/* ---------------- قسم النص المدمج مع خلفية text-bg.jpg ---------------- */
+/* ---------------- قسم صورة الخلفية text-bg.jpg بمقاس 9:16 كاملة ---------------- */
 .invitation-text-container {
-    width: 100%;
-    padding: 110px 25px 100px 25px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-image: url('text-bg.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
     position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
     border-bottom: 1px solid rgba(6, 78, 59, 0.08);
 }
 
-.bismillah-img {
-    max-width: 210px;
-    height: auto;
-    margin-bottom: 35px;
-    position: relative;
-    z-index: 2;
-}
-
-.invitation-text-block {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 24px;
+.text-bg-full-img {
     width: 100%;
-    position: relative;
-    z-index: 2;
-}
-
-.invitation-line-1 {
-    font-size: 1.25rem;
-    line-height: 1.8;
-    color: var(--tertiary-color);
-    font-weight: 300;
-}
-
-.invitation-hosts {
-    font-family: 'Aref Ruqaa', serif;
-    font-size: 1.85rem;
-    color: var(--tertiary-color);
-    margin: 10px 0;
-    font-weight: 400;
-}
-
-.invitation-line-2 {
-    font-size: 1.35rem;
-    line-height: 1.8;
-    color: var(--tertiary-color);
-    font-weight: 300;
-}
-
-.invitation-line-3, 
-.invitation-line-4 {
-    font-size: 1.25rem;
-    line-height: 1.8;
-    color: var(--tertiary-color);
-    font-weight: 300;
+    height: auto;
+    aspect-ratio: 9 / 16;
+    display: block;
+    object-fit: cover;
 }
 
 /* ---------------- قسم الصورة المرجعية ---------------- */
@@ -362,7 +317,7 @@ body {
     flex: 1;
 }
 
-/* ---------------- قسم برنامج الحفل ---------------- */
+/* ---------------- قسم برنامج الحفل (صورة فقط) ---------------- */
 .program-overlay-container {
     position: relative;
     width: 100%;
@@ -378,51 +333,6 @@ body {
     height: auto;
     display: block;
     object-fit: cover;
-}
-
-.program-timeline-vertical {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 38%;
-    max-width: 160px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    z-index: 2;
-}
-
-.program-step {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0;
-}
-
-.step-icon svg {
-    width: 20px;
-    height: 20px;
-    stroke: #111111;
-    stroke-width: 1.5;
-    margin-bottom: 1px;
-}
-
-.step-title {
-    font-family: 'Amiri', serif;
-    font-size: 0.78rem;
-    color: #111111;
-    font-weight: 400;
-    white-space: nowrap;
-    line-height: 1.1;
-}
-
-.timeline-connector {
-    width: 1px;
-    height: 10px;
-    background-color: #111111;
-    margin: 2px 0;
-    opacity: 0.85;
 }
 
 /* ---------------- قسم صورة المغلف envelope-quote-bg.jpg ---------------- */
@@ -443,11 +353,11 @@ body {
     object-fit: cover;
 }
 
-/* ---------------- قسم موقع الحفل ---------------- */
+/* ---------------- قسم موقع الحفل المدمج مع خلفية venue-bg.jpg ---------------- */
 .location-section-bg {
     width: 100%;
     padding: 70px 20px;
-    background-image: url('text-bg.jpg');
+    background-image: url('venue-bg.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
