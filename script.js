@@ -40,11 +40,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
 
-            // 2. تشغيل الفيديو في الخلفية والانتظار حتى يبدأ الدوران فعلياً بدون فجوة خضراء
+            // 2. تشغيل الفيديو في الخلفية والانتظار حتى يبدأ الدوران فعلياً
             if (envelopeVideo) {
                 const playPromise = envelopeVideo.play();
 
-                // دالة لإخفاء صورة الغلاف عند التأكد من بدء دوران الفيديو
                 const showVideoSmoothly = () => {
                     if (coverImage) {
                         coverImage.classList.add('fade-out');
@@ -53,7 +52,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (playPromise !== undefined) {
                     playPromise.then(() => {
-                        // استخدام الحدث timeupdate لضمان أن أول إطار قد تم عرضه فعلياً
                         envelopeVideo.addEventListener('timeupdate', showVideoSmoothly, { once: true });
                     }).catch(() => {
                         finishCoverAnimation();
@@ -113,14 +111,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
     setInterval(updateCountdown, 1000);
     updateCountdown();
-
-    // --- معالجة نموذج تأكيد الحضور المخصص ---
-    const rsvpCustomForm = document.getElementById('rsvp-custom-form');
-    if (rsvpCustomForm) {
-        rsvpCustomForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('شكراً لك! تم إرسال تأكيد حضورك ورسالتك بنجاح.');
-            rsvpCustomForm.reset();
-        });
-    }
 });
